@@ -910,10 +910,11 @@ export function ListingCard({ listing, t }: { listing: Listing; t: any }) {
           <img
             src={listing.image}
             alt={listing.title}
+            referrerPolicy="no-referrer"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
-              target.src = '/images/hero-bg.png';
+              target.src = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80';
             }}
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />

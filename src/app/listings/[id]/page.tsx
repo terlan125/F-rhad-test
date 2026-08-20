@@ -417,6 +417,7 @@ export default function ListingDetailPage({
             <img
               src={galleryImages[activePhotoIndex]}
               alt={`${listing.title} gallery photo ${activePhotoIndex + 1}`}
+              referrerPolicy="no-referrer"
               onClick={() => openLightbox(activePhotoIndex)}
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
@@ -480,6 +481,7 @@ export default function ListingDetailPage({
                 <img
                   src={imgUrl}
                   alt={`Thumbnail ${idx + 1}`}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
               </button>

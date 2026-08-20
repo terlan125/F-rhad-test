@@ -22,7 +22,7 @@ export interface Listing {
 export const MOCK_LISTINGS: Listing[] = [
   {
     id: "rc-1",
-    title: "Xətai residence - 3 otaq 12ci mərtəbə",
+    title: "Xətai Residence Premium Mənzil",
     price: 550000,
     currency: "₼",
     location: "Xətai rayonu, Xocalı pr.",
@@ -35,6 +35,14 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: true,
     isRenovated: true,
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Mənzil",
       "145 m²",
@@ -47,7 +55,7 @@ export const MOCK_LISTINGS: Listing[] = [
   },
   {
     id: "rc-2",
-    title: "Mərdəkan - 3 otaq; 2 mərtəbə",
+    title: "Mərdəkan Lüks Bağ Evi",
     price: 550000,
     currency: "₼",
     location: "Mərdəkan qəsəbəsi, F. Filankəsov küçəsi",
@@ -60,21 +68,29 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: true,
     isRenovated: true,
     landArea: "5 sot",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Bağ evi",
-      "110 m2",
+      "110 m²",
       "Təmirli",
       "5 sot",
       "3 otaq",
       "İpoteka var",
-      "Mərdəkan qəsəbəsi, F. Filankəsov küçəsi"
+      "Mərdəkan qəsəbəsi"
     ]
   },
   {
     id: "rc-3",
-    title: "Xətai residence - 3 otaq 12ci mərtəbə",
-    price: 550000,
+    title: "Ağ Şəhər Panoramik Dəniz Mənzərəsi",
+    price: 680000,
     currency: "₼",
     location: "Xətai rayonu, Ağ Şəhər",
     residenceType: "Flats",
@@ -85,7 +101,15 @@ export const MOCK_LISTINGS: Listing[] = [
     totalFloors: 20,
     hasMortgage: false,
     isRenovated: true,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566752229-250ed79470f8?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Mənzil",
       "160 m²",
@@ -98,32 +122,40 @@ export const MOCK_LISTINGS: Listing[] = [
   },
   {
     id: "rc-4",
-    title: "Xətai residence - 3 otaq 12ci mərtəbə",
-    price: 550000,
+    title: "Port Baku Dizayn Təmirli Mənzil",
+    price: 620000,
     currency: "₼",
-    location: "Xətai rayonu, Port Baku yaxınlığı",
+    location: "Səbail r., Neftçilər pr.",
     residenceType: "Flats",
     propertyType: "Mənzil",
     areaSize: 130,
     rooms: 3,
-    floor: 12,
+    floor: 14,
     totalFloors: 16,
     hasMortgage: true,
     isRenovated: true,
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Mənzil",
       "130 m²",
       "Dizayn Təmirli",
       "3 otaq",
-      "12-ci mərtəbə",
+      "14-cü mərtəbə",
       "İpoteka var",
-      "Neftçilər pr."
+      "Port Baku yaxınlığı"
     ]
   },
   {
     id: "rc-5",
-    title: "Bilgəh Dəniz Mənzərəli Penthouse",
+    title: "Bilgəh Sahil Penthouse",
     price: 850000,
     currency: "₼",
     location: "Bilgəh, Xəzər r.",
@@ -135,7 +167,15 @@ export const MOCK_LISTINGS: Listing[] = [
     totalFloors: 18,
     hasMortgage: true,
     isRenovated: true,
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Penthouse",
       "280 m²",
@@ -161,7 +201,15 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: false,
     isRenovated: true,
     landArea: "6 sot",
-    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Townhouse",
       "220 m²",
@@ -187,6 +235,14 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: true,
     isRenovated: true,
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Ofis",
       "195 m²",
@@ -199,7 +255,7 @@ export const MOCK_LISTINGS: Listing[] = [
   },
   {
     id: "rc-8",
-    title: "Ağ Şəhər 2 Otaqlı Mənzil",
+    title: "Ağ Şəhər Modern 2 Otaqlı Mənzil",
     price: 290000,
     currency: "₼",
     location: "Ağ Şəhər, Xətai",
@@ -212,6 +268,14 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: true,
     isRenovated: true,
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Mənzil",
       "95 m²",
@@ -224,7 +288,7 @@ export const MOCK_LISTINGS: Listing[] = [
   },
   {
     id: "rc-9",
-    title: "Badamdar Panorama Villa",
+    title: "Badamdar Hillside Panorama Villa",
     price: 750000,
     currency: "₼",
     location: "Badamdar 1-ci massiv",
@@ -237,7 +301,15 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: true,
     isRenovated: true,
     landArea: "8 sot",
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Villa",
       "320 m²",
@@ -263,6 +335,14 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: true,
     isRenovated: true,
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Mənzil",
       "85 m²",
@@ -288,6 +368,14 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: false,
     isRenovated: true,
     image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Obyekt",
       "150 m²",
@@ -313,6 +401,14 @@ export const MOCK_LISTINGS: Listing[] = [
     hasMortgage: false,
     isRenovated: false,
     image: "https://images.unsplash.com/photo-1506521782020-18925f440d0a?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1506521782020-18925f440d0a?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80"
+    ],
     features: [
       "Qaraj",
       "25 m²",
