@@ -191,39 +191,25 @@ export default function ListingDetailPage({
             </button>
           )}
 
-          {/* Image Counter & Expand Badge */}
-          <div className="absolute bottom-5 left-4 sm:left-6 flex items-center gap-2 z-20">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                openLightbox(activePhotoIndex);
-              }}
-              className="flex items-center gap-2 bg-black/60 backdrop-blur-md text-white text-xs sm:text-[13px] font-rethink px-3.5 py-2 hover:bg-black/80 transition-all cursor-pointer rounded-full border border-white/20"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-              <span>{t.listings.detail.lightboxHint}</span>
-            </button>
+          {/* Bottom bar: Centered Dots + Right-aligned Counter */}
+          {galleryImages.length > 1 && (
+            <div className="absolute bottom-5 left-0 right-0 z-20 flex items-center justify-center px-4 sm:px-6">
+              {/* Centered Slide Indicator Dots */}
+              <div className="flex items-center gap-1.5 pointer-events-none">
+                {galleryImages.map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      idx === activePhotoIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/40'
+                    }`}
+                  />
+                ))}
+              </div>
 
-            {galleryImages.length > 1 && (
-              <span className="bg-black/60 backdrop-blur-md text-white text-xs font-rethink px-3 py-2 rounded-full border border-white/20">
+              {/* Right-aligned Image Counter (1/6) */}
+              <span className="absolute right-4 sm:right-6 bg-black/60 backdrop-blur-md text-white text-xs font-rethink px-3 py-1.5 rounded-full border border-white/20">
                 {activePhotoIndex + 1} / {galleryImages.length}
               </span>
-            )}
-          </div>
-
-          {/* Slide Indicator Dots */}
-          {galleryImages.length > 1 && (
-            <div className="absolute bottom-5 right-4 z-20 flex items-center gap-1.5 pointer-events-none">
-              {galleryImages.map((_, idx) => (
-                <span
-                  key={idx}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    idx === activePhotoIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/40'
-                  }`}
-                />
-              ))}
             </div>
           )}
         </div>
@@ -394,7 +380,7 @@ export default function ListingDetailPage({
         SECTION 2: DETAILED DESCRIPTION & PHOTO GALLERY
         =========================================================
       */}
-      <section className="w-full max-w-7xl mx-auto px-6 lg:px-16 pt-20 pb-10 flex flex-col gap-16">
+      <section className="w-full max-w-7xl mx-auto px-6 lg:px-16 pt-20 pb-12 flex flex-col gap-10">
         
         {/* DETAILED DESCRIPTION BLOCK */}
         <div className="flex flex-col gap-4 max-w-4xl border-b border-gray-100 pb-12">
@@ -410,27 +396,22 @@ export default function ListingDetailPage({
         </div>
 
         {/* PHOTO GALLERY CAROUSEL */}
-        <div className="flex flex-col gap-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-gray-100 pb-6">
-            <div>
-              <h2
-                className="text-[32px] sm:text-[38px] font-bold text-[#171918]"
-                style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
-              >
-                {t.listings.detail.galleryTitle}
-              </h2>
-            <p className="text-sm font-rethink text-gray-500 mt-1">
-              {t.listings.detail.lightboxHint}
-            </p>
-          </div>
+        <div className="flex flex-col gap-4 sm:gap-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2 border-b border-gray-100 pb-3 sm:pb-6">
+            <h2
+              className="text-[32px] sm:text-[38px] font-bold text-[#171918]"
+              style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
+            >
+              {t.listings.detail.galleryTitle}
+            </h2>
 
-          <div className="text-xs font-rethink text-gray-400">
-            {galleryImages.length} photo items
+            <div className="text-xs font-rethink text-gray-400">
+              {galleryImages.length} photo items
+            </div>
           </div>
-        </div>
 
         {/* Carousel & Main Photo Grid View */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2 sm:gap-6">
           {/* Main Large Carousel Photo */}
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] bg-gray-100 overflow-hidden group cursor-pointer">
             <img
@@ -482,7 +463,7 @@ export default function ListingDetailPage({
           </div>
 
           {/* Thumbnail Strip */}
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 sm:gap-4">
             {galleryImages.map((imgUrl, idx) => (
               <button
                 key={idx}
@@ -513,8 +494,8 @@ export default function ListingDetailPage({
         SECTION 3: OXŞAR ELANLAR (SIMILAR LISTINGS SECTION)
         =========================================================
       */}
-      <section className="w-full max-w-7xl mx-auto px-6 lg:px-16 py-16 border-t border-gray-100 flex flex-col gap-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-gray-100 pb-6">
+      <section className="w-full max-w-7xl mx-auto px-6 lg:px-16 py-8 sm:py-16 border-t border-gray-100 flex flex-col gap-5 sm:gap-10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-gray-100 pb-3 sm:pb-6">
           <div>
             <h2
               className="text-[28px] sm:text-[36px] font-bold text-[#171918]"

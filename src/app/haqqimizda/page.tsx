@@ -195,6 +195,7 @@ export default function HaqqimizdaPage() {
           onClick={() => setIsVideoLightboxOpen(true)}
           className="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-black overflow-hidden shadow-2xl group origin-center cursor-pointer"
         >
+          {/* Background Ambient Video */}
           <YouTubeBackground videoId="HxpsCBtbqv8" overlayGradient="bg-black/40" />
           
           {/* Centered Glassmorphism Play Button Overlay */}

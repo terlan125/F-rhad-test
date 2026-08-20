@@ -335,28 +335,22 @@ export default function ListingsSection() {
     return 0;
   });
 
-  // Infinite scroll simulation up to 10 items
+  // Reset visible count to 6 whenever filters change
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleCount((prev) => {
-            if (prev < 10 && prev < filteredListings.length) {
-              return Math.min(prev + 2, 10);
-            }
-            return prev;
-          });
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (gridBottomRef.current) {
-      observer.observe(gridBottomRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [filteredListings.length]);
+    setVisibleCount(6);
+  }, [
+    selectedResidence,
+    selectedPropertyTypes,
+    selectedRoom,
+    selectedFeatures,
+    minPrice,
+    maxPrice,
+    minArea,
+    maxArea,
+    minFloor,
+    maxFloor,
+    sortOrder,
+  ]);
 
   const displayedListings = filteredListings.slice(0, visibleCount);
 
@@ -818,10 +812,17 @@ export default function ListingsSection() {
             )}
           </div>
 
-          {/* Infinite Scroll Trigger Anchor */}
-          <div ref={gridBottomRef} className="h-10 w-full flex items-center justify-center opacity-0">
-            <span>Loading...</span>
-          </div>
+          {/* "Daha çox göstər" (Load More) Button / Infinite Scroll Trigger */}
+          {visibleCount < filteredListings.length && (
+            <div ref={gridBottomRef} className="w-full flex items-center justify-center pt-2 pb-2">
+              <button
+                onClick={() => setVisibleCount((prev) => Math.min(prev + 6, filteredListings.length))}
+                className="px-8 py-3 bg-[#171918] text-white text-xs sm:text-sm font-rethink font-medium rounded-full hover:bg-black transition-all cursor-pointer shadow-md active:scale-95"
+              >
+                {t.listings.viewMore}
+              </button>
+            </div>
+          )}
 
         </div>
 
@@ -917,8 +918,16 @@ export function ListingCard({ listing, t }: { listing: Listing; t: any }) {
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
 
+          {/* Sağ-aşağı qaranlıq gradient (qiymət oxunaqlılığı üçün) */}
+          <div
+            className="absolute bottom-0 right-0 w-2/3 h-1/3 pointer-events-none transition-opacity duration-300 group-hover:opacity-0"
+            style={{
+              background: 'radial-gradient(ellipse at bottom right, rgba(0,0,0,0.55) 0%, transparent 70%)',
+            }}
+          />
+
           {/* Default Price Tag (Visible when NOT hovered - Scaled for 2-column mobile/tablet grid) */}
-          <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 flex items-center gap-1 sm:gap-1.5 transition-opacity duration-300 group-hover:opacity-0 pointer-events-none">
+          <div className="absolute bottom-1.5 right-1.5 sm:bottom-4 sm:right-4 flex items-center gap-0 sm:gap-1.5 transition-opacity duration-300 group-hover:opacity-0 pointer-events-none">
             <span
               className="text-[14px] sm:text-[20px] lg:text-[24px]"
               style={{

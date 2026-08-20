@@ -162,7 +162,7 @@ export default function HeroSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="w-full max-w-full sm:max-w-[650px] flex flex-col gap-6 mr-0 pr-0"
+            className="w-full lg:w-1/2 flex flex-col gap-6 mr-0 pr-0"
           >
             {/* Top Line */}
             <div

@@ -199,7 +199,7 @@ export default function Navbar({ variant }: NavbarProps) {
       </AnimatePresence>
 
       {/* Floating Centered Navbar Header (z-40, below slide-over filter drawer z-[9999]) */}
-      <header className="fixed top-[40px] left-0 right-0 sm:left-1/2 sm:-translate-x-1/2 z-40 flex flex-col items-center px-[16px] sm:px-0 pointer-events-auto w-full sm:w-auto">
+      <header className="fixed top-[16px] sm:top-[40px] left-0 right-0 sm:left-1/2 sm:-translate-x-1/2 z-40 flex flex-col items-center px-[16px] sm:px-0 pointer-events-auto w-full sm:w-auto">
         
         {/* 
           =========================================================

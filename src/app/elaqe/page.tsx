@@ -75,7 +75,7 @@ export default function ElaqePage() {
         {/* 
           RIGHT COLUMN: MINIMALIST CREATIVE SINGLE-INPUT FORM (50% Width on Desktop, 1st on Mobile)
         */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center px-[16px] py-8 sm:p-14 lg:p-20 bg-white order-1 lg:order-2 mt-[44px] lg:mt-0 pt-[96px] sm:pt-36 lg:pt-20">
+        <div className="w-full lg:w-1/2 min-h-[90vh] lg:min-h-0 flex items-center justify-center px-[16px] py-8 sm:p-14 lg:p-20 bg-white order-1 lg:order-2 mt-[44px] lg:mt-0 pt-[96px] sm:pt-36 lg:pt-20">
           <div className="max-w-xl w-full flex flex-col gap-8">
             
             <AnimatePresence mode="wait">
