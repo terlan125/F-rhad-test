@@ -8,7 +8,7 @@ interface VideoBackgroundProps {
 }
 
 export default function VideoBackground({
-  videoUrl = "/videos/hero-bg.mp4",
+  videoUrl = "https://www.image2url.com/r2/default/videos/1787210694782-39aa49c7-b035-4248-adc6-74f9bd0bef74.mp4",
   overlayGradient,
 }: VideoBackgroundProps) {
   return (

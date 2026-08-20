@@ -28,7 +28,7 @@ export default function YouTubeBackground({ overlayGradient }: YouTubeBackground
           className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
           style={{ zIndex: 1 }}
         >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          <source src="https://www.image2url.com/r2/default/videos/1787210694782-39aa49c7-b035-4248-adc6-74f9bd0bef74.mp4" type="video/mp4" />
         </video>
 
         {/* Şəffaf qat: Edge media overlay-ni bloklayır */}
