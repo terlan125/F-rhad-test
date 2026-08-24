@@ -1112,7 +1112,7 @@ export function ListingCard({ listing, t }: { listing: Listing; t: any }) {
         </h3>
 
         {/* Single-line Specs: Rooms, Area m², Floor/TotalFloors */}
-        <div className="flex items-center gap-1.5 text-[12px] sm:text-[14px] text-gray-500 font-rethink font-light mt-1 truncate">
+        <div className="flex items-center gap-1.5 text-[12px] sm:text-[14px] text-gray-500 font-rethink font-light mt-0.5 truncate">
           <span>{listing.rooms} otaq</span>
           <span>•</span>
           <span>{listing.areaSize} m²</span>
