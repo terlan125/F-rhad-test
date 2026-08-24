@@ -50,7 +50,7 @@ export default function HeroSection() {
               Left: Large Title
               Right: Description + Buttons underneath
             */}
-            <div className="w-full flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+            <div className="w-full flex flex-col lg:flex-row justify-between items-start lg:items-end gap-[4px] lg:gap-8">
               
               {/* Left Column: Big Title */}
               <div className="max-w-[650px]">
@@ -65,7 +65,7 @@ export default function HeroSection() {
               </div>
 
               {/* Right Column: Description & Buttons */}
-              <div className="w-full lg:max-w-[332px] flex flex-col items-stretch gap-[8px]">
+              <div className="w-full lg:max-w-[332px] flex flex-col items-stretch gap-[24px] lg:gap-[8px]">
                 <p
                   className="font-rethink text-white/90 text-[15px] sm:text-[16px] font-light leading-relaxed"
                   style={{
