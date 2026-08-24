@@ -143,7 +143,7 @@ export default function ElaqePage() {
                   </form>
 
                   {/* Direct Phone Support Footer Hint */}
-                  <div className="w-full pt-2 border-t border-gray-100 flex flex-wrap items-center justify-center lg:justify-between gap-3 text-xs text-gray-400 font-rethink">
+                  <div className="w-full pt-2 border-t border-gray-100 flex flex-wrap items-center justify-center lg:justify-between gap-3 text-[14px] lg:text-xs text-gray-400 font-rethink">
                     <span>Müştəri dəstəyi 24/7</span>
                     <a href="tel:+994518004404" className="text-[#171918] hover:underline font-medium">
                       +994(51)800-44-04
