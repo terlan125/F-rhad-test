@@ -50,9 +50,9 @@ export default function Navbar({ variant }: NavbarProps) {
         setIsOverWhiteSection(false);
       }
 
-      // Detect when reaching Footer section (ONLY when footer is 100% visible at page bottom)
+      // Detect when reaching Footer section (ONLY when footer is 100% visible at page bottom, excluded on /elaqe page)
       const distanceFromBottom = fullHeight - (scrollY + windowHeight);
-      if (fullHeight > windowHeight + 100 && distanceFromBottom <= 60) {
+      if (pathname !== '/elaqe' && fullHeight > windowHeight + 100 && distanceFromBottom <= 60) {
         setIsAtFooter(true);
       } else {
         setIsAtFooter(false);
