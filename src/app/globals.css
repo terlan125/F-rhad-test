@@ -45,15 +45,15 @@ body {
 }
 
 .font-noto-serif {
-  font-family: var(--font-noto-serif-display), Georgia, serif;
+  font-family: var(--font-rethink-sans), "Rethink Sans", sans-serif;
 }
 
 .font-rethink {
-  font-family: var(--font-rethink-sans), sans-serif;
+  font-family: var(--font-rethink-sans), "Rethink Sans", sans-serif;
 }
 
 .font-bodoni {
-  font-family: var(--font-bodoni-moda), Georgia, serif;
+  font-family: var(--font-rethink-sans), "Rethink Sans", sans-serif;
 }
 
 /* Glassmorphism utilities */

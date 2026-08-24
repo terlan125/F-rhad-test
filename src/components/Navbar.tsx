@@ -451,7 +451,7 @@ export default function Navbar({ variant }: NavbarProps) {
                             flex: '1 0 0',
                             alignSelf: 'stretch',
                             color: '#FFF',
-                            fontFamily: '"Noto Serif Display", Georgia, serif',
+                            fontFamily: '"Rethink Sans", sans-serif',
                             fontStyle: 'normal',
                             fontWeight: 600,
                             lineHeight: '1.25',

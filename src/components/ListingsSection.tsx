@@ -538,8 +538,8 @@ export default function ListingsSection() {
       */}
       <div className="lg:hidden w-full flex flex-col gap-4 border-b border-gray-100 pb-4 mb-6">
         <h2
-          className="font-noto-serif text-[#444] text-[28px] sm:text-[34px] font-normal leading-normal"
-          style={{ fontFamily: '"Noto Serif Display", Georgia, serif' }}
+          className="font-rethink text-[#444] text-[28px] sm:text-[34px] font-normal leading-normal"
+          style={{ fontFamily: '"Rethink Sans", sans-serif' }}
         >
           {t.listings.title}
         </h2>
@@ -621,10 +621,10 @@ export default function ListingsSection() {
           {/* Header & Sort Dropdown Div */}
           <div className="flex flex-col gap-[16px] border-b border-gray-100 pb-[12px]">
             <h2
-              className="font-noto-serif text-[#444] text-[36px] font-normal leading-normal"
+              className="font-rethink text-[#444] text-[36px] font-normal leading-normal"
               style={{
                 color: '#444',
-                fontFamily: '"Noto Serif Display", Georgia, serif',
+                fontFamily: '"Rethink Sans", sans-serif',
                 fontSize: '36px',
                 fontWeight: 400,
                 lineHeight: 'normal',

@@ -57,7 +57,7 @@ export default function HeroSection() {
                 <h1
                   className="font-rethink text-white text-[38px] sm:text-[50px] md:text-[58px] lg:text-[66px] font-normal leading-[1.1] tracking-tight"
                   style={{
-                    fontFamily: '"Rethink Sans", "Noto Serif Display", sans-serif',
+                    fontFamily: '"Rethink Sans", sans-serif',
                   }}
                 >
                   {t.hero.title}
@@ -180,7 +180,7 @@ export default function HeroSection() {
                 className="font-bodoni text-white text-[22px] sm:text-[24px] font-normal leading-normal shrink-0"
                 style={{
                   color: '#FFF',
-                  fontFamily: '"Bodoni Moda", Georgia, serif',
+                  fontFamily: '"Rethink Sans", sans-serif',
                   fontSize: '24px',
                   fontWeight: 400,
                   lineHeight: 'normal',
