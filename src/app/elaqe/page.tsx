@@ -107,7 +107,7 @@ export default function ElaqePage() {
                   {/* SINGLE PHONE INPUT & SUBMIT FORM */}
                   <form onSubmit={handleSubmit} className="w-full flex flex-col items-center lg:items-start gap-5 pt-2">
                     <div className="flex flex-col items-center lg:items-start gap-2 w-full">
-                      <label className="text-xs font-rethink text-gray-500 font-medium text-center lg:text-left">
+                      <label className="text-xs lg:text-[13px] font-rethink text-gray-500 font-medium text-center lg:text-left">
                         Əlaqə Nömrəsi
                       </label>
                       
@@ -118,7 +118,7 @@ export default function ElaqePage() {
                           value={phoneNumber}
                           onChange={(e) => setPhoneNumber(e.target.value)}
                           placeholder="+994 (51) 800-44-04"
-                          className="w-full bg-gray-50 border border-gray-200 text-[#171918] placeholder-gray-400 px-5 py-4 text-[16px] font-rethink outline-none focus:border-[#171918] focus:bg-white transition-all rounded-none text-center lg:text-left"
+                          className="w-full bg-gray-50 border border-gray-200 text-[#171918] placeholder-gray-400 placeholder:text-[14px] px-5 py-4 text-[16px] font-rethink outline-none focus:border-[#171918] focus:bg-white transition-all rounded-none text-center lg:text-left"
                         />
                       </div>
                     </div>
