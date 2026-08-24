@@ -439,21 +439,22 @@ export default function Navbar({ variant }: NavbarProps) {
                       </div>
                     </div>
 
-                    {/* Navigation Links (Enlarged Gap) */}
-                    <div className="flex flex-col gap-4 sm:gap-5 w-full">
+                    {/* Navigation Links (Gap 4px, Font size 44px, Weight 700) */}
+                    <div className="flex flex-col gap-[4px] w-full">
                       {navLinks.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
                           onClick={() => setIsOpen(false)}
-                          className="hover:opacity-75 transition-opacity text-[28px] sm:text-[32px] md:text-[34px]"
+                          className="hover:opacity-75 transition-opacity text-[44px]"
                           style={{
                             flex: '1 0 0',
                             alignSelf: 'stretch',
                             color: '#FFF',
                             fontFamily: '"Rethink Sans", sans-serif',
                             fontStyle: 'normal',
-                            fontWeight: 600,
+                            fontWeight: 700,
+                            fontSize: '44px',
                             lineHeight: '1.25',
                           }}
                         >
