@@ -50,8 +50,9 @@ export default function Navbar({ variant }: NavbarProps) {
         setIsOverWhiteSection(false);
       }
 
-      // Detect when reaching Footer section (~350px threshold from page bottom on scrollable pages)
-      if (fullHeight > windowHeight + 300 && scrollY + windowHeight >= fullHeight - 350) {
+      // Detect when reaching Footer section (ONLY when footer is 100% visible at page bottom)
+      const distanceFromBottom = fullHeight - (scrollY + windowHeight);
+      if (fullHeight > windowHeight + 100 && distanceFromBottom <= 60) {
         setIsAtFooter(true);
       } else {
         setIsAtFooter(false);
