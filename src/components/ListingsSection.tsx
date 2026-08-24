@@ -1110,6 +1110,24 @@ export function ListingCard({ listing, t }: { listing: Listing; t: any }) {
         >
           {listing.title}
         </h3>
+
+        {/* Single-line Specs: Rooms, Area m², Floor/TotalFloors */}
+        <div className="flex items-center gap-1.5 text-[12px] sm:text-[14px] text-gray-500 font-rethink font-light mt-1 truncate">
+          <span>{listing.rooms} otaq</span>
+          <span>•</span>
+          <span>{listing.areaSize} m²</span>
+          {listing.floor > 0 && listing.totalFloors > 0 ? (
+            <>
+              <span>•</span>
+              <span>{listing.floor}/{listing.totalFloors} mərtəbə</span>
+            </>
+          ) : listing.landArea ? (
+            <>
+              <span>•</span>
+              <span>{listing.landArea}</span>
+            </>
+          ) : null}
+        </div>
       </div>
     </Link>
   );
