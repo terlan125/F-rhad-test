@@ -136,7 +136,7 @@ export default function ListingDetailPage({
         */}
         <div
           onClick={() => openLightbox(activePhotoIndex)}
-          className="w-full lg:w-1/2 h-[50vh] sm:h-[60vh] lg:h-screen sticky top-0 relative overflow-hidden bg-gray-900 group cursor-pointer select-none"
+          className="w-full lg:w-1/2 h-[50vh] sm:h-[60vh] lg:h-screen relative lg:sticky lg:top-0 overflow-hidden bg-gray-900 group cursor-pointer select-none"
         >
           <AnimatePresence mode="wait">
             <motion.img

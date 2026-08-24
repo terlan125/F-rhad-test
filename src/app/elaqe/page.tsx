@@ -39,7 +39,7 @@ export default function ElaqePage() {
         {/* 
           LEFT COLUMN: CINEMATIC VIDEO & EDITORIAL BRAND STATEMENT (50% Width on Desktop, 2nd on Mobile)
         */}
-        <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen sticky top-0 relative bg-black flex flex-col justify-end p-8 sm:p-16 text-white overflow-hidden group order-2 lg:order-1">
+        <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen relative lg:sticky lg:top-0 bg-black flex flex-col justify-end p-8 sm:p-16 text-white overflow-hidden group order-2 lg:order-1">
           {/* Ambient Video Background */}
           <YouTubeBackground videoId="HxpsCBtbqv8" overlayGradient="bg-black/65" />
 
