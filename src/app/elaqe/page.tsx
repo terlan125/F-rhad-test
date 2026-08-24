@@ -39,34 +39,36 @@ export default function ElaqePage() {
         {/* 
           LEFT COLUMN: CINEMATIC VIDEO & EDITORIAL BRAND STATEMENT (50% Width on Desktop, 2nd on Mobile)
         */}
-        <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen relative lg:sticky lg:top-0 bg-black flex flex-col justify-end p-8 sm:p-16 text-white overflow-hidden group order-2 lg:order-1">
+        <div className="w-full lg:w-1/2 min-h-[45vh] lg:h-screen relative lg:sticky lg:top-0 bg-black flex flex-col justify-center items-center lg:justify-end p-6 sm:p-12 lg:p-16 text-white text-center lg:text-left overflow-hidden group order-2 lg:order-1">
           {/* Ambient Video Background */}
           <YouTubeBackground videoId="HxpsCBtbqv8" overlayGradient="bg-black/65" />
 
           {/* Bottom Direct Contact Chips */}
-          <div className="z-10 flex flex-wrap items-center gap-3 pt-6 border-t border-white/15">
-            <a
-              href="tel:+994518004404"
-              className="px-4 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-xs font-rethink transition-all border border-white/15 flex items-center gap-2"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-              <span>+994(51)800-44-04</span>
-            </a>
+          <div className="z-10 flex flex-col sm:flex-row items-center justify-center lg:justify-between w-full gap-4 pt-6 border-t border-white/15">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="tel:+994518004404"
+                className="px-4 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-xs font-rethink transition-all border border-white/15 flex items-center justify-center gap-2 rounded-full"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <span>+994(51)800-44-04</span>
+              </a>
 
-            <a
-              href="mailto:farhad@realtorscaspian.az"
-              className="px-4 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-xs font-rethink transition-all border border-white/15 flex items-center gap-2"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              <span>farhad@realtorscaspian.az</span>
-            </a>
+              <a
+                href="mailto:farhad@realtorscaspian.az"
+                className="px-4 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-xs font-rethink transition-all border border-white/15 flex items-center justify-center gap-2 rounded-full"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                <span>farhad@realtorscaspian.az</span>
+              </a>
+            </div>
 
-            <span className="text-xs font-rethink text-white/50 py-1 ml-auto">
+            <span className="text-xs font-rethink text-white/60 py-1 text-center lg:text-right">
               Bakı, Azərbaycan
             </span>
           </div>
