@@ -1098,35 +1098,37 @@ export function ListingCard({ listing, t }: { listing: Listing; t: any }) {
 
         </div>
 
-        {/* Property Title */}
-        <h3
-          className="text-[#171918] font-normal text-[14px] sm:text-[18px] mt-1 tracking-tight line-clamp-2"
-          style={{
-            color: '#171918',
-            fontFamily: '"Rethink Sans", sans-serif',
-            fontWeight: 400,
-            lineHeight: '1.3',
-          }}
-        >
-          {listing.title}
-        </h3>
+        {/* Title and Specs Wrapper (exact gap-[2px]) */}
+        <div className="flex flex-col gap-[2px] mt-1">
+          <h3
+            className="text-[#171918] font-normal text-[14px] sm:text-[18px] tracking-tight line-clamp-2"
+            style={{
+              color: '#171918',
+              fontFamily: '"Rethink Sans", sans-serif',
+              fontWeight: 400,
+              lineHeight: '1.3',
+            }}
+          >
+            {listing.title}
+          </h3>
 
-        {/* Single-line Specs: Rooms, Area m², Floor/TotalFloors */}
-        <div className="flex items-center gap-1.5 text-[12px] sm:text-[14px] text-gray-500 font-rethink font-light mt-0.5 truncate">
-          <span>{listing.rooms} otaq</span>
-          <span>•</span>
-          <span>{listing.areaSize} m²</span>
-          {listing.floor > 0 && listing.totalFloors > 0 ? (
-            <>
-              <span>•</span>
-              <span>{listing.floor}/{listing.totalFloors} mərtəbə</span>
-            </>
-          ) : listing.landArea ? (
-            <>
-              <span>•</span>
-              <span>{listing.landArea}</span>
-            </>
-          ) : null}
+          {/* Single-line Specs: Rooms, Area m², Floor/TotalFloors */}
+          <div className="flex items-center gap-1.5 text-[12px] sm:text-[14px] text-gray-500 font-rethink font-light truncate">
+            <span>{listing.rooms} otaq</span>
+            <span>•</span>
+            <span>{listing.areaSize} m²</span>
+            {listing.floor > 0 && listing.totalFloors > 0 ? (
+              <>
+                <span>•</span>
+                <span>{listing.floor}/{listing.totalFloors} mərtəbə</span>
+              </>
+            ) : listing.landArea ? (
+              <>
+                <span>•</span>
+                <span>{listing.landArea}</span>
+              </>
+            ) : null}
+          </div>
         </div>
       </div>
     </Link>
