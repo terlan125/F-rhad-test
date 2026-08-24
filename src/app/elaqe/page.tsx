@@ -45,7 +45,11 @@ export default function ElaqePage() {
 
           {/* Bottom Direct Contact Chips */}
           <div className="z-10 flex flex-col sm:flex-row items-center justify-center lg:justify-between w-full gap-4 pt-6 border-t-0 lg:border-t border-white/15">
-            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+            <span className="text-xs font-rethink text-white/60 py-1 text-center lg:text-right order-1 lg:order-2">
+              Bakı, Azərbaycan
+            </span>
+
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 w-full sm:w-auto order-2 lg:order-1">
               <a
                 href="tel:+994518004404"
                 className="w-[225px] py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-xs font-rethink transition-all border border-white/15 flex items-center justify-center gap-2 rounded-full text-center"
@@ -67,10 +71,6 @@ export default function ElaqePage() {
                 <span>farhad@realtorscaspian.az</span>
               </a>
             </div>
-
-            <span className="text-xs font-rethink text-white/60 py-1 text-center lg:text-right">
-              Bakı, Azərbaycan
-            </span>
           </div>
         </div>
 
