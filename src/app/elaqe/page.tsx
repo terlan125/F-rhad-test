@@ -44,7 +44,7 @@ export default function ElaqePage() {
           <YouTubeBackground videoId="HxpsCBtbqv8" overlayGradient="bg-black/65" />
 
           {/* Bottom Direct Contact Chips */}
-          <div className="z-10 flex flex-col sm:flex-row items-center justify-center lg:justify-between w-full gap-4 pt-6 border-t border-white/15">
+          <div className="z-10 flex flex-col sm:flex-row items-center justify-center lg:justify-between w-full gap-4 pt-6 border-t-0 lg:border-t border-white/15">
             <div className="flex flex-wrap items-center justify-center gap-3">
               <a
                 href="tel:+994518004404"
