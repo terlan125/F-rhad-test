@@ -439,14 +439,14 @@ export default function Navbar({ variant }: NavbarProps) {
                       </div>
                     </div>
 
-                    {/* Navigation Links (Gap 4px, Font size 44px, Weight 700) */}
+                    {/* Navigation Links (Gap 4px, Font size 32px mobile / 44px sm+, Weight 700) */}
                     <div className="flex flex-col gap-[4px] w-full">
                       {navLinks.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
                           onClick={() => setIsOpen(false)}
-                          className="hover:opacity-75 transition-opacity text-[44px]"
+                          className="hover:opacity-75 transition-opacity text-[32px] sm:text-[44px]"
                           style={{
                             flex: '1 0 0',
                             alignSelf: 'stretch',
@@ -454,7 +454,6 @@ export default function Navbar({ variant }: NavbarProps) {
                             fontFamily: '"Rethink Sans", sans-serif',
                             fontStyle: 'normal',
                             fontWeight: 700,
-                            fontSize: '44px',
                             lineHeight: '1.25',
                           }}
                         >
