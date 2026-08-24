@@ -65,7 +65,7 @@ export default function HeroSection() {
               </div>
 
               {/* Right Column: Description & Buttons */}
-              <div className="w-full lg:max-w-[332px] flex flex-col items-stretch gap-5">
+              <div className="w-full lg:max-w-[332px] flex flex-col items-stretch gap-[4px]">
                 <p
                   className="font-rethink text-white/90 text-[15px] sm:text-[16px] font-light leading-relaxed"
                   style={{
@@ -76,7 +76,7 @@ export default function HeroSection() {
                 </p>
 
                 {/* Buttons underneath Description */}
-                <div className="w-full flex flex-col sm:flex-row items-center gap-3 pt-1">
+                <div className="w-full flex flex-col sm:flex-row items-center gap-3">
                   <Link
                     href="/elanlar"
                     onClick={() => {
