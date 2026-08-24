@@ -156,7 +156,7 @@ export default function HeroSection() {
           SECTION 2 (400px Height - Shifted right with description margin)
           =========================================================
         */}
-        <section id="why-us" className="relative w-full h-auto lg:h-[400px] my-[40px] lg:my-0 pt-4 pb-16 sm:pb-24 lg:py-0 flex items-center justify-end px-4 sm:px-12 lg:pl-12 lg:pr-0 lg:mr-0 z-20">
+        <section id="why-us" className="relative w-full h-auto lg:h-[400px] my-[80px] lg:my-0 pt-4 pb-16 sm:pb-24 lg:py-0 flex items-center justify-end px-4 sm:px-12 lg:pl-12 lg:pr-0 lg:mr-0 z-20">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
