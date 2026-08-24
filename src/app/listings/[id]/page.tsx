@@ -237,7 +237,7 @@ export default function ListingDetailPage({
                 </span>
               </div>
               <h1
-                className="text-[32px] sm:text-[40px] font-bold leading-[1.15] text-[#171918]"
+                className="text-[32px] sm:text-[40px] font-bold leading-[1.15] text-[#171918] mt-[8px] sm:mt-0"
                 style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
               >
                 {listing.title}
