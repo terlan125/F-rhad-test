@@ -306,7 +306,7 @@ export const TRANSLATIONS = {
         contact: "Контакты",
       },
       phoneLabel: "Телефон",
-      emailLabel: "Email",
+      emailLabel: "Эл. почта",
       buyBtn: "Ищу дом",
       sellBtn: "Продаю дом",
     },
