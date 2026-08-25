@@ -666,81 +666,83 @@ export default function ListingsSection() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch min-h-[500px] sm:min-h-[650px] lg:min-h-[850px]">
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start min-h-[500px] sm:min-h-[650px] lg:min-h-[850px]">
         
         {/* 
           =========================================================
           DESKTOP LEFT COLUMN: STICKY FILTERS SIDEBAR (hidden on mobile/tablet)
           =========================================================
         */}
-        <div className="hidden lg:flex w-[420px] shrink-0 sticky top-[40px] h-full self-stretch flex-col justify-between py-2">
-          
-          {/* Top Section: Title & Sort Dropdown + Search Input */}
-          <div className="flex flex-col gap-5 w-full">
-            <div className="flex items-center justify-between w-full">
-              <h2
-                className="font-rethink text-[#444] text-[36px] font-normal leading-normal"
-                style={{
-                  color: '#444',
-                  fontFamily: '"Rethink Sans", sans-serif',
-                  fontSize: '36px',
-                  fontWeight: 400,
-                  lineHeight: 'normal',
-                }}
-              >
-                {t.listings.title}
-              </h2>
-
-              {/* Dropdown (Lowest price) */}
-              <div className="relative inline-block text-left">
-                <button
-                  onClick={() => setIsSortOpen(!isSortOpen)}
-                  className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+        <div className="hidden lg:block w-[420px] shrink-0 self-stretch">
+          <div className="sticky top-[100px] flex flex-col gap-6 py-2">
+            
+            {/* Top Section: Title & Sort Dropdown + Search Input */}
+            <div className="flex flex-col gap-5 w-full">
+              <div className="flex items-center justify-between w-full">
+                <h2
+                  className="font-rethink text-[#444] text-[36px] font-normal leading-normal"
+                  style={{
+                    color: '#444',
+                    fontFamily: '"Rethink Sans", sans-serif',
+                    fontSize: '36px',
+                    fontWeight: 400,
+                    lineHeight: 'normal',
+                  }}
                 >
-                  <span style={{ color: '#444', fontFamily: '"Rethink Sans", sans-serif', fontSize: '14px', fontWeight: 400 }}>
-                    {sortOrder === 'lowest' ? t.listings.sortLowest : sortOrder === 'highest' ? t.listings.sortHighest : t.listings.sortNewest}
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    className={`transition-transform duration-200 ${isSortOpen ? 'rotate-180' : ''}`}
+                  {t.listings.title}
+                </h2>
+
+                {/* Dropdown (Lowest price) */}
+                <div className="relative inline-block text-left">
+                  <button
+                    onClick={() => setIsSortOpen(!isSortOpen)}
+                    className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
                   >
-                    <path d="M12 6L8 10L4 6" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-                
-                <AnimatePresence>
-                  {isSortOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -5 }}
-                      className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-30 py-2"
+                    <span style={{ color: '#444', fontFamily: '"Rethink Sans", sans-serif', fontSize: '14px', fontWeight: 400 }}>
+                      {sortOrder === 'lowest' ? t.listings.sortLowest : sortOrder === 'highest' ? t.listings.sortHighest : t.listings.sortNewest}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      className={`transition-transform duration-200 ${isSortOpen ? 'rotate-180' : ''}`}
                     >
-                      <button onClick={() => { setSortOrder('lowest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
-                        {t.listings.sortLowest}
-                      </button>
-                      <button onClick={() => { setSortOrder('highest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
-                        {t.listings.sortHighest}
-                      </button>
-                      <button onClick={() => { setSortOrder('newest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
-                        {t.listings.sortNewest}
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      <path d="M12 6L8 10L4 6" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  
+                  <AnimatePresence>
+                    {isSortOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-30 py-2"
+                      >
+                        <button onClick={() => { setSortOrder('lowest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
+                          {t.listings.sortLowest}
+                        </button>
+                        <button onClick={() => { setSortOrder('highest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
+                          {t.listings.sortHighest}
+                        </button>
+                        <button onClick={() => { setSortOrder('newest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
+                          {t.listings.sortNewest}
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
+
+              {renderSearchInput()}
             </div>
 
-            {renderSearchInput()}
-          </div>
-
-          {/* Lower Filters Container Div: Rooms & all remaining controls */}
-          <div className="flex flex-col gap-6">
-            {renderFilterControls()}
+            {/* Lower Filters Container Div: Rooms & all remaining controls */}
+            <div className="flex flex-col gap-6">
+              {renderFilterControls()}
+            </div>
           </div>
         </div>
 
