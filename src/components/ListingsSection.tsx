@@ -393,51 +393,52 @@ export default function ListingsSection() {
     { id: 'Qaraj', label: t.listings.featuresFilter.garage },
   ];
 
+  const renderSearchInput = () => (
+    <div className="flex flex-col gap-2 w-full max-w-[428px]">
+      <div className="relative w-full">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            scrollToListings();
+          }}
+          placeholder={t.listings.searchPlaceholder}
+          className="w-full bg-transparent border-b border-gray-200 text-[#171918] placeholder:text-gray-400 placeholder:font-light text-[15px] font-rethink py-2.5 pr-9 outline-none focus:border-[#171918] transition-all rounded-none"
+          style={{
+            fontFamily: '"Rethink Sans", sans-serif',
+          }}
+        />
+        {searchQuery ? (
+          <button
+            onClick={() => setSearchQuery('')}
+            aria-label="Clear search"
+            className="absolute right-1 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black cursor-pointer text-xs p-1 transition-colors"
+          >
+            ✕
+          </button>
+        ) : (
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#171918"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none opacity-70"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        )}
+      </div>
+    </div>
+  );
+
   const renderFilterControls = () => (
     <>
-      {/* Search Input Filter */}
-      <div className="flex flex-col gap-2 w-full max-w-[428px]">
-        <div className="relative w-full">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              scrollToListings();
-            }}
-            placeholder={t.listings.searchPlaceholder}
-            className="w-full bg-transparent border-b border-gray-200 text-[#171918] placeholder:text-gray-400 placeholder:font-light text-[15px] font-rethink py-2.5 pr-9 outline-none focus:border-[#171918] transition-all rounded-none"
-            style={{
-              fontFamily: '"Rethink Sans", sans-serif',
-            }}
-          />
-          {searchQuery ? (
-            <button
-              onClick={() => setSearchQuery('')}
-              aria-label="Clear search"
-              className="absolute right-1 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black cursor-pointer text-xs p-1 transition-colors"
-            >
-              ✕
-            </button>
-          ) : (
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#171918"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none opacity-70"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          )}
-        </div>
-      </div>
-
       {/* Rooms Multitoggle Filter */}
       <div className="flex flex-col gap-2">
         <label className="text-xs font-rethink text-gray-500 font-medium uppercase tracking-wider">
@@ -672,69 +673,73 @@ export default function ListingsSection() {
           DESKTOP LEFT COLUMN: STICKY FILTERS SIDEBAR (hidden on mobile/tablet)
           =========================================================
         */}
-        <div className="hidden lg:flex w-[420px] shrink-0 sticky top-[40px] self-start flex-col gap-6 py-2">
+        <div className="hidden lg:flex w-[420px] shrink-0 sticky top-[40px] self-start flex-col gap-[36px] py-2">
           
-          {/* Header & Sort Dropdown Div */}
-          <div className="flex items-center justify-between w-full">
-            <h2
-              className="font-rethink text-[#444] text-[36px] font-normal leading-normal"
-              style={{
-                color: '#444',
-                fontFamily: '"Rethink Sans", sans-serif',
-                fontSize: '36px',
-                fontWeight: 400,
-                lineHeight: 'normal',
-              }}
-            >
-              {t.listings.title}
-            </h2>
-
-            {/* Dropdown (Lowest price) */}
-            <div className="relative inline-block text-left">
-              <button
-                onClick={() => setIsSortOpen(!isSortOpen)}
-                className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+          {/* Top Section: Title & Sort Dropdown + Search Input */}
+          <div className="flex flex-col gap-5 w-full">
+            <div className="flex items-center justify-between w-full">
+              <h2
+                className="font-rethink text-[#444] text-[36px] font-normal leading-normal"
+                style={{
+                  color: '#444',
+                  fontFamily: '"Rethink Sans", sans-serif',
+                  fontSize: '36px',
+                  fontWeight: 400,
+                  lineHeight: 'normal',
+                }}
               >
-                <span style={{ color: '#444', fontFamily: '"Rethink Sans", sans-serif', fontSize: '14px', fontWeight: 400 }}>
-                  {sortOrder === 'lowest' ? t.listings.sortLowest : sortOrder === 'highest' ? t.listings.sortHighest : t.listings.sortNewest}
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  className={`transition-transform duration-200 ${isSortOpen ? 'rotate-180' : ''}`}
+                {t.listings.title}
+              </h2>
+
+              {/* Dropdown (Lowest price) */}
+              <div className="relative inline-block text-left">
+                <button
+                  onClick={() => setIsSortOpen(!isSortOpen)}
+                  className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
                 >
-                  <path d="M12 6L8 10L4 6" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              
-              <AnimatePresence>
-                {isSortOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-30 py-2"
+                  <span style={{ color: '#444', fontFamily: '"Rethink Sans", sans-serif', fontSize: '14px', fontWeight: 400 }}>
+                    {sortOrder === 'lowest' ? t.listings.sortLowest : sortOrder === 'highest' ? t.listings.sortHighest : t.listings.sortNewest}
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className={`transition-transform duration-200 ${isSortOpen ? 'rotate-180' : ''}`}
                   >
-                    <button onClick={() => { setSortOrder('lowest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
-                      {t.listings.sortLowest}
-                    </button>
-                    <button onClick={() => { setSortOrder('highest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
-                      {t.listings.sortHighest}
-                    </button>
-                    <button onClick={() => { setSortOrder('newest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
-                      {t.listings.sortNewest}
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    <path d="M12 6L8 10L4 6" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                
+                <AnimatePresence>
+                  {isSortOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-30 py-2"
+                    >
+                      <button onClick={() => { setSortOrder('lowest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
+                        {t.listings.sortLowest}
+                      </button>
+                      <button onClick={() => { setSortOrder('highest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
+                        {t.listings.sortHighest}
+                      </button>
+                      <button onClick={() => { setSortOrder('newest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
+                        {t.listings.sortNewest}
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
+
+            {renderSearchInput()}
           </div>
 
-          {/* Lower Filters Container Div */}
-          <div className="flex flex-col gap-6 pt-2">
+          {/* Lower Filters Container Div: Rooms & all remaining controls */}
+          <div className="flex flex-col gap-6">
             {renderFilterControls()}
           </div>
         </div>
@@ -806,6 +811,7 @@ export default function ListingsSection() {
 
                   {/* Drawer Scrollable Content */}
                   <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-6">
+                    {renderSearchInput()}
                     {renderFilterControls()}
                   </div>
 
