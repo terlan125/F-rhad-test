@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import GradientWaves from './GradientWaves';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function CtaSection() {
+  const { t } = useLanguage();
   const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -60,10 +62,10 @@ export default function CtaSection() {
               className="text-xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15] drop-shadow-md"
               style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
             >
-              Sualınız var?
+              {t.cta.title}
             </h2>
             <p className="text-white/80 font-rethink text-xs sm:text-lg font-light leading-relaxed drop-shadow">
-              Peşəkar dəstək almaq üçün sadəcə nömrənizi qeyd edin, ən qısa zamanda sizinlə əlaqə saxlayaq
+              {t.cta.subtitle}
             </p>
           </div>
 
@@ -116,7 +118,7 @@ export default function CtaSection() {
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>Təşəkkür edirik! Tezliklə sizinlə əlaqə saxlayacağıq.</span>
+                <span>{t.cta.successMsg}</span>
               </motion.div>
             )}
           </AnimatePresence>

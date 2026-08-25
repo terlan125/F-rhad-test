@@ -139,6 +139,11 @@ export const TRANSLATIONS = {
       ctaBtnListings: "Bütün elanlara baxın",
       ctaBtnContact: "Bizimlə əlaqə saxlayın",
     },
+    cta: {
+      title: "Sualınız var?",
+      subtitle: "Peşəkar dəstək almaq üçün sadəcə nömrənizi qeyd edin, ən qısa zamanda sizinlə əlaqə saxlayaq",
+      successMsg: "Təşəkkür edirik! Tezliklə sizinlə əlaqə saxlayacağıq.",
+    },
     footer: {
       upBtn: "Yuxarı qalx",
       designerLabel: "Saytın dizaynı ",
@@ -280,6 +285,11 @@ export const TRANSLATIONS = {
       ctaBtnListings: "Explore All Properties",
       ctaBtnContact: "Contact Our Agents",
     },
+    cta: {
+      title: "Have questions?",
+      subtitle: "Leave your phone number for professional support and we will contact you shortly",
+      successMsg: "Thank you! We will contact you shortly.",
+    },
     footer: {
       upBtn: "Scroll to top",
       designerLabel: "Site designed by ",
@@ -420,6 +430,11 @@ export const TRANSLATIONS = {
       ],
       ctaBtnListings: "Смотреть все объекты",
       ctaBtnContact: "Связаться с нами",
+    },
+    cta: {
+      title: "Есть вопросы?",
+      subtitle: "Оставьте свой номер телефона для консультации, и мы свяжемся с вами в ближайшее время",
+      successMsg: "Спасибо! Мы скоро свяжемся с вами.",
     },
     footer: {
       upBtn: "Наверх",
