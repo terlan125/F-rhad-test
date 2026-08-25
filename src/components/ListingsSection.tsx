@@ -666,14 +666,14 @@ export default function ListingsSection() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start min-h-[500px] sm:min-h-[650px] lg:min-h-[850px]">
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch min-h-[500px] sm:min-h-[650px] lg:min-h-[850px]">
         
         {/* 
           =========================================================
           DESKTOP LEFT COLUMN: STICKY FILTERS SIDEBAR (hidden on mobile/tablet)
           =========================================================
         */}
-        <div className="hidden lg:flex w-[420px] shrink-0 sticky top-[40px] self-start flex-col gap-[36px] py-2">
+        <div className="hidden lg:flex w-[420px] shrink-0 sticky top-[40px] h-full self-stretch flex-col justify-between py-2">
           
           {/* Top Section: Title & Sort Dropdown + Search Input */}
           <div className="flex flex-col gap-5 w-full">
