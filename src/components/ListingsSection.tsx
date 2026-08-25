@@ -406,7 +406,7 @@ export default function ListingsSection() {
               scrollToListings();
             }}
             placeholder={t.listings.searchPlaceholder}
-            className="w-full bg-white border border-[#171918] rounded-full text-[#171918] placeholder:text-gray-400 placeholder:font-light text-[15px] font-rethink px-6 py-3.5 pr-12 outline-none focus:ring-1 focus:ring-[#171918] transition-all shadow-sm"
+            className="w-full bg-transparent border-b border-[#171918] text-[#171918] placeholder:text-gray-400 placeholder:font-light text-[15px] font-rethink py-2.5 pr-9 outline-none focus:border-black transition-all rounded-none"
             style={{
               fontFamily: '"Rethink Sans", sans-serif',
             }}
@@ -415,21 +415,21 @@ export default function ListingsSection() {
             <button
               onClick={() => setSearchQuery('')}
               aria-label="Clear search"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black cursor-pointer text-sm p-1.5 transition-colors"
+              className="absolute right-1 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black cursor-pointer text-xs p-1 transition-colors"
             >
               ✕
             </button>
           ) : (
             <svg
-              width="18"
-              height="18"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#171918"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-80"
+              className="absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none opacity-70"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
