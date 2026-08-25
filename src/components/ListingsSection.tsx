@@ -406,7 +406,7 @@ export default function ListingsSection() {
               scrollToListings();
             }}
             placeholder={t.listings.searchPlaceholder}
-            className="w-full bg-transparent border-b border-[#171918] text-[#171918] placeholder:text-gray-400 placeholder:font-light text-[15px] font-rethink py-2.5 pr-9 outline-none focus:border-black transition-all rounded-none"
+            className="w-full bg-transparent border-b border-gray-200 text-[#171918] placeholder:text-gray-400 placeholder:font-light text-[15px] font-rethink py-2.5 pr-9 outline-none focus:border-[#171918] transition-all rounded-none"
             style={{
               fontFamily: '"Rethink Sans", sans-serif',
             }}
