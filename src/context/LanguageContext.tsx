@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export type Language = 'AZ' | 'ENG' | 'RUS';
 
@@ -454,7 +454,28 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>('AZ');
+  const [lang, setLangState] = useState<Language>('AZ');
+
+  useEffect(() => {
+    try {
+      const savedLang = localStorage.getItem('rc_lang') as Language;
+      if (savedLang && (savedLang === 'AZ' || savedLang === 'ENG' || savedLang === 'RUS')) {
+        setLangState(savedLang);
+      }
+    } catch {
+      // Ignore localStorage errors
+    }
+  }, []);
+
+  const setLang = (newLang: Language) => {
+    setLangState(newLang);
+    try {
+      localStorage.setItem('rc_lang', newLang);
+    } catch {
+      // Ignore localStorage errors
+    }
+  };
+
   const t = TRANSLATIONS[lang];
 
   return (
