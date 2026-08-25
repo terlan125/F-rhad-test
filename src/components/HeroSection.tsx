@@ -65,7 +65,7 @@ export default function HeroSection() {
               </div>
 
               {/* Right Column: Description & Buttons */}
-              <div className="w-full lg:max-w-[332px] flex flex-col items-stretch gap-[24px] lg:gap-[8px]">
+              <div className="w-full lg:max-w-[420px] flex flex-col items-stretch gap-[24px] lg:gap-[12px]">
                 <p
                   className="font-rethink text-white/90 text-[15px] sm:text-[16px] font-light leading-relaxed"
                   style={{
@@ -84,14 +84,15 @@ export default function HeroSection() {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }
                     }}
-                    className="w-full flex-1"
+                    className="w-full sm:flex-1"
                   >
                     <motion.button
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
-                      className="w-full cursor-pointer bg-white text-[#171918] px-7 py-3 font-rethink text-[15px] font-medium transition-all hover:bg-white/90 shadow-lg rounded-none text-center"
+                      className="w-full cursor-pointer bg-white text-[#171918] px-5 sm:px-6 py-3 font-rethink text-[15px] font-medium transition-all hover:bg-white/90 shadow-lg rounded-none text-center whitespace-nowrap"
                       style={{
                         fontFamily: '"Rethink Sans", sans-serif',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       {t.hero.searchBtn}
@@ -100,14 +101,15 @@ export default function HeroSection() {
 
                   <Link
                     href="/elaqe"
-                    className="w-full flex-1"
+                    className="w-full sm:flex-1"
                   >
                     <motion.button
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
-                      className="w-full cursor-pointer border border-white text-white px-7 py-3 font-rethink text-[15px] font-medium transition-all hover:bg-white/15 rounded-none text-center"
+                      className="w-full cursor-pointer border border-white text-white px-5 sm:px-6 py-3 font-rethink text-[15px] font-medium transition-all hover:bg-white/15 rounded-none text-center whitespace-nowrap"
                       style={{
                         fontFamily: '"Rethink Sans", sans-serif',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       {t.hero.sellBtn}

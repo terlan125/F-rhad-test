@@ -527,7 +527,7 @@ export default function Navbar({ variant }: NavbarProps) {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full cursor-pointer border border-[#FFF] text-white transition-all hover:bg-white/15 rounded-none"
+                      className="w-full cursor-pointer border border-[#FFF] text-white transition-all hover:bg-white/15 rounded-none whitespace-nowrap"
                       style={{
                         display: 'flex',
                         padding: '14px 24px',
@@ -541,6 +541,7 @@ export default function Navbar({ variant }: NavbarProps) {
                         lineHeight: 'normal',
                         border: '1px solid #FFF',
                         borderRadius: '0px',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       {t.nav.buyBtn}
@@ -558,7 +559,7 @@ export default function Navbar({ variant }: NavbarProps) {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full cursor-pointer bg-white text-[#171918] transition-all hover:bg-white/90 rounded-none shadow-lg"
+                      className="w-full cursor-pointer bg-white text-[#171918] transition-all hover:bg-white/90 rounded-none shadow-lg whitespace-nowrap"
                       style={{
                         display: 'flex',
                         padding: '14px 24px',
@@ -572,6 +573,7 @@ export default function Navbar({ variant }: NavbarProps) {
                         lineHeight: 'normal',
                         backgroundColor: '#FFF',
                         borderRadius: '0px',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       {t.nav.sellBtn}
