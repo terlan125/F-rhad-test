@@ -129,11 +129,11 @@ export default function HaqqimizdaPage() {
           className="text-[38px] sm:text-[56px] font-bold text-[#171918]"
           style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
         >
-          Bakının və Xəzər sahilinin lüks daşınmaz əmlak brendi
+          {t.aboutPage.title}
         </h1>
 
         <p className="text-gray-600 font-rethink text-base sm:text-lg font-light max-w-2xl leading-relaxed">
-          2014-cü ildən bəri müştərilərimizə premium mənzillər, villalar və eksklüziv rezidensiyaların alqı-satqısında peşəkar vasitəçilik xidməti təklif edirik.
+          {t.aboutPage.subtitle}
         </p>
 
         {/* 
@@ -147,9 +147,9 @@ export default function HaqqimizdaPage() {
               className="text-3xl sm:text-4xl font-bold font-rethink text-[#171918]"
               style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
             >
-              10+ İl
+              {t.aboutPage.expYears}
             </span>
-            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">Təcrübə (2014-dən)</span>
+            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">{t.aboutPage.expLabel}</span>
           </div>
 
           <div className="flex flex-col gap-1 items-center">
@@ -157,9 +157,9 @@ export default function HaqqimizdaPage() {
               className="text-3xl sm:text-4xl font-bold font-rethink text-[#171918]"
               style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
             >
-              200+
+              {t.aboutPage.propertiesCount}
             </span>
-            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">Eksklüziv Obyekt</span>
+            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">{t.aboutPage.propertiesLabel}</span>
           </div>
 
           <div className="flex flex-col gap-1 items-center">
@@ -167,9 +167,9 @@ export default function HaqqimizdaPage() {
               className="text-3xl sm:text-4xl font-bold font-rethink text-[#171918]"
               style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
             >
-              99%
+              {t.aboutPage.satisfactionRate}
             </span>
-            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">Müştəri Məmnuniyyəti</span>
+            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">{t.aboutPage.satisfactionLabel}</span>
           </div>
 
           <div className="flex flex-col gap-1 items-center">
@@ -177,9 +177,9 @@ export default function HaqqimizdaPage() {
               className="text-3xl sm:text-4xl font-bold font-rethink text-[#171918]"
               style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
             >
-              100%
+              {t.aboutPage.guaranteeRate}
             </span>
-            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">Hüquqi Zəmanət</span>
+            <span className="text-xs font-rethink text-gray-400 uppercase tracking-wider">{t.aboutPage.guaranteeLabel}</span>
           </div>
         </div>
       </section>
@@ -215,8 +215,8 @@ export default function HaqqimizdaPage() {
           </div>
 
           <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-14 bg-gradient-to-t from-black/85 via-transparent to-transparent text-white pointer-events-none z-20">
-            <span className="text-xs font-rethink uppercase tracking-widest text-white/70">Realtors Caspian Film</span>
-            <h3 className="text-2xl sm:text-4xl font-bold font-rethink text-white">Lüks Həyat Tərzinizin Ünvanı</h3>
+            <span className="text-xs font-rethink uppercase tracking-widest text-white/70">{t.aboutPage.filmSubtitle}</span>
+            <h3 className="text-2xl sm:text-4xl font-bold font-rethink text-white">{t.aboutPage.filmTitle}</h3>
           </div>
         </motion.div>
       </section>
@@ -238,7 +238,7 @@ export default function HaqqimizdaPage() {
             <div className="w-full flex items-center justify-between z-10 pt-2 px-2">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-rethink uppercase tracking-widest text-white/70 font-medium">
-                  Realtors Caspian Film • Video Lightbox
+                  {t.aboutPage.filmSubtitle} • Video Lightbox
                 </span>
               </div>
 
@@ -279,7 +279,7 @@ export default function HaqqimizdaPage() {
               className="text-[32px] sm:text-[42px] font-bold text-[#171918]"
               style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
             >
-              Peşəkar Komandamız
+              {t.aboutPage.teamTitle}
             </h3>
           </div>
 
@@ -287,12 +287,16 @@ export default function HaqqimizdaPage() {
             {TEAM_MEMBERS.map((member) => (
               <div key={member.id} className="flex flex-col gap-2.5 sm:gap-4 group cursor-pointer">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-200 shadow-sm">
-                  <Image
+                  <img
                     src={member.image}
                     alt={member.name}
-                    fill
-                    unoptimized
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
+                    }}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-4 sm:left-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -334,11 +338,11 @@ export default function HaqqimizdaPage() {
                 className="text-[32px] sm:text-[42px] font-bold text-[#171918]"
                 style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
               >
-                Foto Qalereya
+                {t.aboutPage.galleryTitle}
               </h3>
             </div>
             <span className="text-xs font-rethink text-gray-400">
-              * Tam ölçüdə baxmaq üçün şəkillərə klikləyin
+              {t.aboutPage.gallerySubtitle}
             </span>
           </div>
 
@@ -350,12 +354,16 @@ export default function HaqqimizdaPage() {
                 onClick={() => setLightboxIndex(idx)}
                 className={`break-inside-avoid relative w-full ${img.aspect} overflow-hidden cursor-pointer group bg-gray-900 shadow-md mb-3 sm:mb-6`}
               >
-                <Image
+                <img
                   src={img.url}
                   alt={img.title}
-                  fill
-                  unoptimized
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null;
+                    target.src = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80';
+                  }}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-colors duration-300" />
                 
@@ -412,13 +420,17 @@ export default function HaqqimizdaPage() {
                 ‹
               </button>
 
-              <div className="relative w-full h-full max-w-4xl">
-                <Image
+              <div className="relative w-full h-full max-w-4xl flex items-center justify-center">
+                <img
                   src={GALLERY_IMAGES[lightboxIndex].url}
                   alt={GALLERY_IMAGES[lightboxIndex].title}
-                  fill
-                  unoptimized
-                  className="object-contain"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null;
+                    target.src = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80';
+                  }}
+                  className="max-w-full max-h-full object-contain"
                 />
               </div>
 

@@ -96,11 +96,11 @@ export default function ElaqePage() {
                       className="text-[34px] sm:text-[42px] font-bold text-[#171918] leading-[1.15]"
                       style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
                     >
-                      Nömrənizi qeyd edin, biz sizinlə əlaqəyə keçək
+                      {t.contactPage.subtitle}
                     </h1>
                     
                     <p className="text-gray-500 font-rethink text-[15px] font-light leading-relaxed max-w-lg">
-                      Ehtiyacınıza ən uyğun mənzili seçmək və ya məsləhətləşmə almaq üçün telefon nömrənizi qeyd edin. Menecerimiz qısa zamanda zəng edəcək.
+                      {t.contactPage.desc}
                     </p>
                   </div>
 
@@ -108,7 +108,7 @@ export default function ElaqePage() {
                   <form onSubmit={handleSubmit} className="w-full flex flex-col items-center lg:items-start gap-5 pt-2">
                     <div className="flex flex-col items-center lg:items-start gap-2 w-full">
                       <label className="text-xs lg:text-[13px] font-rethink text-gray-500 font-medium text-center lg:text-left">
-                        Əlaqə Nömrəsi
+                        {t.nav.phoneLabel}
                       </label>
                       
                       <div className="relative w-full">
@@ -132,7 +132,7 @@ export default function ElaqePage() {
                         <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       ) : (
                         <>
-                          <span>Zəng sifariş et</span>
+                          <span>{t.contactPage.submitBtn}</span>
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <line x1="5" y1="12" x2="19" y2="12" />
                             <polyline points="12 5 19 12 12 19" />
@@ -144,7 +144,7 @@ export default function ElaqePage() {
 
                   {/* Direct Phone Support Footer Hint */}
                   <div className="w-full pt-2 border-t border-gray-100 flex flex-wrap items-center justify-center lg:justify-between gap-3 text-[14px] lg:text-xs text-gray-400 font-rethink">
-                    <span>Müştəri dəstəyi 24/7</span>
+                    <span>{t.contactPage.supportLabel}</span>
                     <a href="tel:+994518004404" className="text-[#171918] hover:underline font-medium">
                       +994(51)800-44-04
                     </a>
@@ -169,10 +169,10 @@ export default function ElaqePage() {
                       className="text-[28px] font-bold text-[#171918]"
                       style={{ fontFamily: '"Rethink Sans", sans-serif', fontWeight: 700 }}
                     >
-                      Müraciətiniz qəbul olundu!
+                      {t.contactPage.successTitle}
                     </h3>
                     <p className="text-gray-600 font-rethink font-light text-[15px] leading-relaxed max-w-sm">
-                      Təşəkkür edirik. Menecerimiz dərhal <span className="font-semibold text-[#171918]">{phoneNumber}</span> nömrəniz ilə əlaqə saxlayacaq.
+                      {t.contactPage.successMsg} <span className="font-semibold text-[#171918]">{phoneNumber}</span>
                     </p>
                   </div>
 
