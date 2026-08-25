@@ -716,7 +716,7 @@ export default function ListingsSection() {
           DESKTOP LEFT COLUMN: STICKY FILTERS SIDEBAR (hidden on mobile/tablet)
           =========================================================
         */}
-        <aside className="hidden lg:flex w-[420px] shrink-0 sticky top-[100px] max-h-[calc(100vh-120px)] overflow-y-auto pr-2 flex-col gap-6 py-2">
+        <aside className="hidden lg:flex w-[420px] shrink-0 sticky top-[100px] max-h-[calc(100vh-120px)] overflow-y-auto pr-2 flex-col gap-6 py-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           
           {/* DIV 1: Elanlar (Title), Sort Dropdown & Search Input */}
           <div className="flex flex-col gap-4 w-full">
