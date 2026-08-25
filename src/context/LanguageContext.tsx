@@ -484,14 +484,57 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Language>('AZ');
 
   useEffect(() => {
+    let savedLang: Language | null = null;
     try {
-      const savedLang = localStorage.getItem('rc_lang') as Language;
-      if (savedLang && (savedLang === 'AZ' || savedLang === 'ENG' || savedLang === 'RUS')) {
-        setLangState(savedLang);
-      }
+      savedLang = localStorage.getItem('rc_lang') as Language;
     } catch {
-      // Ignore localStorage errors
+      // Ignore localStorage read errors
     }
+
+    if (savedLang && (savedLang === 'AZ' || savedLang === 'ENG' || savedLang === 'RUS')) {
+      setLangState(savedLang);
+      return;
+    }
+
+    // Auto-detect user's country location for first-time visitors
+    const detectLanguageByLocation = async () => {
+      try {
+        const res = await fetch('https://api.country.is');
+        if (res.ok) {
+          const data = await res.json();
+          const country = data.country?.toUpperCase();
+
+          if (country === 'RU') {
+            setLangState('RUS');
+            return;
+          } else if (country === 'AZ' || country === 'TR') {
+            setLangState('AZ');
+            return;
+          } else if (country) {
+            setLangState('ENG');
+            return;
+          }
+        }
+      } catch {
+        // Fallback to browser locale if API fails
+      }
+
+      // Fallback via browser navigator.language
+      try {
+        const browserLang = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+        if (browserLang.startsWith('ru')) {
+          setLangState('RUS');
+        } else if (browserLang.startsWith('az') || browserLang.startsWith('tr')) {
+          setLangState('AZ');
+        } else {
+          setLangState('ENG');
+        }
+      } catch {
+        setLangState('AZ');
+      }
+    };
+
+    detectLanguageByLocation();
   }, []);
 
   const setLang = (newLang: Language) => {
@@ -499,7 +542,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     try {
       localStorage.setItem('rc_lang', newLang);
     } catch {
-      // Ignore localStorage errors
+      // Ignore localStorage write errors
     }
   };
 
