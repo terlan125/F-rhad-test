@@ -29,7 +29,7 @@ export const TRANSLATIONS = {
       sellBtn: "Ev satıram",
     },
     listings: {
-      title: "Zövqünüzə uyğun evlər",
+      title: "Elanlar",
       sortLowest: "Ən aşağı qiymət",
       sortHighest: "Ən yüksək qiymət",
       sortNewest: "Ən yenilər",
