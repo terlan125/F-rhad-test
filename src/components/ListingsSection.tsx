@@ -396,10 +396,7 @@ export default function ListingsSection() {
   const renderFilterControls = () => (
     <>
       {/* Search Input Filter */}
-      <div className="flex flex-col gap-2 w-full">
-        <label className="text-xs font-rethink text-gray-500 font-medium uppercase tracking-wider">
-          {t.listings.searchLabel}
-        </label>
+      <div className="flex flex-col gap-2 w-full max-w-[428px]">
         <div className="relative w-full">
           <input
             type="text"
@@ -409,25 +406,30 @@ export default function ListingsSection() {
               scrollToListings();
             }}
             placeholder={t.listings.searchPlaceholder}
-            className="w-full bg-white border border-gray-200 text-[#171918] placeholder-gray-400 text-sm font-rethink px-4 py-3 pr-10 outline-none focus:border-[#171918] transition-all rounded-none"
+            className="w-full bg-white border border-[#171918] rounded-full text-[#171918] placeholder:text-gray-400 placeholder:font-light text-[15px] font-rethink px-6 py-3.5 pr-12 outline-none focus:ring-1 focus:ring-[#171918] transition-all shadow-sm"
+            style={{
+              fontFamily: '"Rethink Sans", sans-serif',
+            }}
           />
           {searchQuery ? (
             <button
               onClick={() => setSearchQuery('')}
               aria-label="Clear search"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black cursor-pointer text-xs p-1"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black cursor-pointer text-sm p-1.5 transition-colors"
             >
               ✕
             </button>
           ) : (
             <svg
-              width="16"
-              height="16"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke="#171918"
               strokeWidth="2"
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-80"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
