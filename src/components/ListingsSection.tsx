@@ -179,8 +179,16 @@ export default function ListingsSection() {
   const { t } = useLanguage();
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isShortScreen, setIsShortScreen] = useState<boolean>(false);
+
   useEffect(() => {
     setIsMounted(true);
+    const checkScreenHeight = () => {
+      setIsShortScreen(window.innerHeight < 850);
+    };
+    checkScreenHeight();
+    window.addEventListener('resize', checkScreenHeight);
+    return () => window.removeEventListener('resize', checkScreenHeight);
   }, []);
 
   // Filters State
@@ -438,186 +446,191 @@ export default function ListingsSection() {
     </div>
   );
 
-  const renderFilterControls = (isMobile = false) => (
-    <>
-      {/* Rooms Multitoggle Filter */}
-      <div className="flex flex-col gap-2">
-        <label className="text-xs font-rethink text-gray-500 font-medium uppercase tracking-wider">
-          {t.listings.roomsLabel}
-        </label>
-        <div className="flex items-center gap-3">
-          {[1, 2, 3, 4, 5].map((roomNum) => {
-            const isActive = selectedRoom === roomNum;
-            return (
-              <button
-                key={roomNum}
-                onClick={() => {
-                  setSelectedRoom(isActive ? null : roomNum);
-                  scrollToListings();
-                }}
-                className={`w-11 h-11 flex items-center justify-center cursor-pointer transition-all rounded-full ${
-                  isActive
-                    ? 'border border-[#171918] bg-white text-[#171918] font-medium shadow-sm'
-                    : 'text-gray-600 hover:text-black border border-transparent'
-                }`}
-              >
-                <span style={{ fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-                  {roomNum === 5 ? '5+' : roomNum}
+  const renderFilterControls = (isMobile = false) => {
+    const shouldCollapse = !isMobile && isShortScreen;
+    const showAdvanced = !shouldCollapse || isMoreFiltersOpen;
+
+    return (
+      <>
+        {/* Rooms Multitoggle Filter */}
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-rethink text-gray-500 font-medium uppercase tracking-wider">
+            {t.listings.roomsLabel}
+          </label>
+          <div className="flex items-center gap-3">
+            {[1, 2, 3, 4, 5].map((roomNum) => {
+              const isActive = selectedRoom === roomNum;
+              return (
+                <button
+                  key={roomNum}
+                  onClick={() => {
+                    setSelectedRoom(isActive ? null : roomNum);
+                    scrollToListings();
+                  }}
+                  className={`w-11 h-11 flex items-center justify-center cursor-pointer transition-all rounded-full ${
+                    isActive
+                      ? 'border border-[#171918] bg-white text-[#171918] font-medium shadow-sm'
+                      : 'text-gray-600 hover:text-black border border-transparent'
+                  }`}
+                >
+                  <span style={{ fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                    {roomNum === 5 ? '5+' : roomNum}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Price Range Capsule Slider */}
+        <div className="flex flex-col gap-5 w-full max-w-[428px]">
+          <div className="w-full flex flex-col gap-2">
+            <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
+              <div className="flex items-center gap-1.5">
+                <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                  {minPrice.toLocaleString()}
                 </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Price Range Capsule Slider */}
-      <div className="flex flex-col gap-5 w-full max-w-[428px]">
-        <div className="w-full flex flex-col gap-2">
-          <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
-            <div className="flex items-center gap-1.5">
-              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-                {minPrice.toLocaleString()}
-              </span>
-              <ManatBlackIcon />
+                <ManatBlackIcon />
+              </div>
+              <span className="text-gray-400">|</span>
+              <div className="flex items-center gap-1.5">
+                <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                  {maxPrice.toLocaleString()}
+                </span>
+                <ManatBlackIcon />
+              </div>
             </div>
-            <span className="text-gray-400">|</span>
-            <div className="flex items-center gap-1.5">
-              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-                {maxPrice.toLocaleString()}
-              </span>
-              <ManatBlackIcon />
+            <div className="px-3">
+              <DualRangeSlider
+                min={30000}
+                max={2000000}
+                step={10000}
+                minVal={minPrice}
+                maxVal={maxPrice}
+                onChange={(minVal, maxVal) => {
+                  setMinPrice(minVal);
+                  setMaxPrice(maxVal);
+                }}
+              />
             </div>
           </div>
-          <div className="px-3">
-            <DualRangeSlider
-              min={30000}
-              max={2000000}
-              step={10000}
-              minVal={minPrice}
-              maxVal={maxPrice}
-              onChange={(minVal, maxVal) => {
-                setMinPrice(minVal);
-                setMaxPrice(maxVal);
-              }}
-            />
-          </div>
         </div>
-      </div>
 
-      {/* Toggle Button for Desktop */}
-      {!isMobile && (
-        <button
-          onClick={() => setIsMoreFiltersOpen(!isMoreFiltersOpen)}
-          className="flex items-center gap-2 text-xs font-rethink font-semibold text-[#171918] hover:text-black py-2.5 px-5 bg-gray-100 hover:bg-gray-200 transition-all rounded-full self-start cursor-pointer my-1 shadow-sm"
-        >
-          <span>{isMoreFiltersOpen ? t.listings.lessFilters : t.listings.moreFilters}</span>
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className={`transition-transform duration-300 ${isMoreFiltersOpen ? 'rotate-180' : ''}`}
+        {/* Pure Text Toggle Link for Short Desktop Screens */}
+        {shouldCollapse && (
+          <button
+            onClick={() => setIsMoreFiltersOpen(!isMoreFiltersOpen)}
+            className="bg-transparent border-none text-[#171918] hover:opacity-70 text-xs font-rethink font-medium underline flex items-center gap-1.5 p-0 cursor-pointer my-1.5 self-start transition-opacity"
           >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
-      )}
+            <span>{isMoreFiltersOpen ? t.listings.lessFilters : t.listings.moreFilters}</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className={`transition-transform duration-300 ${isMoreFiltersOpen ? 'rotate-180' : ''}`}
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+        )}
 
-      {/* ADVANCED FILTERS (Always shown on mobile drawer, collapsible on desktop) */}
-      {(isMobile || isMoreFiltersOpen) && (
-        <motion.div
-          initial={!isMobile ? { opacity: 0, height: 0 } : false}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="flex flex-col gap-6 w-full max-w-[428px] overflow-hidden pt-1"
-        >
-          {/* Area Range Capsule Slider */}
-          <div className="w-full flex flex-col gap-2">
-            <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
-              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-                {minArea} m²
-              </span>
-              <span className="text-gray-400">|</span>
-              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-                {maxArea} m²
-              </span>
+        {/* ADVANCED FILTERS */}
+        {showAdvanced && (
+          <motion.div
+            initial={shouldCollapse ? { opacity: 0, height: 0 } : false}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="flex flex-col gap-6 w-full max-w-[428px] overflow-hidden pt-1"
+          >
+            {/* Area Range Capsule Slider */}
+            <div className="w-full flex flex-col gap-2">
+              <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
+                <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                  {minArea} m²
+                </span>
+                <span className="text-gray-400">|</span>
+                <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                  {maxArea} m²
+                </span>
+              </div>
+              <div className="px-3">
+                <DualRangeSlider
+                  min={30}
+                  max={500}
+                  step={5}
+                  minVal={minArea}
+                  maxVal={maxArea}
+                  onChange={(minVal, maxVal) => {
+                    setMinArea(minVal);
+                    setMaxArea(maxArea);
+                  }}
+                />
+              </div>
             </div>
-            <div className="px-3">
-              <DualRangeSlider
-                min={30}
-                max={500}
-                step={5}
-                minVal={minArea}
-                maxVal={maxArea}
-                onChange={(minVal, maxVal) => {
-                  setMinArea(minVal);
-                  setMaxArea(maxVal);
-                }}
+
+            {/* Floor Range Capsule Slider */}
+            <div className="w-full flex flex-col gap-2">
+              <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
+                <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                  {minFloor} {t.listings.floorLabel}
+                </span>
+                <span className="text-gray-400">|</span>
+                <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                  {maxFloor} {t.listings.floorLabel}
+                </span>
+              </div>
+              <div className="px-3">
+                <DualRangeSlider
+                  min={1}
+                  max={50}
+                  step={1}
+                  minVal={minFloor}
+                  maxVal={maxFloor}
+                  onChange={(minVal, maxVal) => {
+                    setMinFloor(minVal);
+                    setMaxFloor(maxFloor);
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Property Type Multitoggle */}
+            <div className="flex flex-col gap-3 mt-1">
+              <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
+                {t.listings.propertyTypeTitle}
+              </h3>
+              <CollapsibleToggleGroup
+                items={propertyTypes}
+                selectedIds={selectedPropertyTypes}
+                onSelect={handlePropertyTypeSelect}
+                limit={3}
+                viewMoreLabel={t.listings.viewMore}
+                viewLessLabel={t.listings.viewLess}
               />
             </div>
-          </div>
 
-          {/* Floor Range Capsule Slider */}
-          <div className="w-full flex flex-col gap-2">
-            <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
-              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-                {minFloor} {t.listings.floorLabel}
-              </span>
-              <span className="text-gray-400">|</span>
-              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-                {maxFloor} {t.listings.floorLabel}
-              </span>
-            </div>
-            <div className="px-3">
-              <DualRangeSlider
-                min={1}
-                max={50}
-                step={1}
-                minVal={minFloor}
-                maxVal={maxFloor}
-                onChange={(minVal, maxVal) => {
-                  setMinFloor(minVal);
-                  setMaxFloor(maxVal);
-                }}
+            {/* Features Multitoggle Filter */}
+            <div className="flex flex-col gap-3">
+              <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
+                {t.listings.featuresFilter.title}
+              </h3>
+              <CollapsibleToggleGroup
+                items={featuresList}
+                selectedIds={selectedFeatures}
+                onSelect={handleFeatureSelect}
+                limit={3}
+                viewMoreLabel={t.listings.viewMore}
+                viewLessLabel={t.listings.viewLess}
               />
             </div>
-          </div>
-
-          {/* Property Type Multitoggle */}
-          <div className="flex flex-col gap-3 mt-1">
-            <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
-              {t.listings.propertyTypeTitle}
-            </h3>
-            <CollapsibleToggleGroup
-              items={propertyTypes}
-              selectedIds={selectedPropertyTypes}
-              onSelect={handlePropertyTypeSelect}
-              limit={3}
-              viewMoreLabel={t.listings.viewMore}
-              viewLessLabel={t.listings.viewLess}
-            />
-          </div>
-
-          {/* Features Multitoggle Filter */}
-          <div className="flex flex-col gap-3">
-            <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
-              {t.listings.featuresFilter.title}
-            </h3>
-            <CollapsibleToggleGroup
-              items={featuresList}
-              selectedIds={selectedFeatures}
-              onSelect={handleFeatureSelect}
-              limit={3}
-              viewMoreLabel={t.listings.viewMore}
-              viewLessLabel={t.listings.viewLess}
-            />
-          </div>
-        </motion.div>
-      )}
-    </>
-  );
+          </motion.div>
+        )}
+      </>
+    );
+  };
 
   return (
     <section id="elanlar" ref={sectionRef} className="w-full pt-[60px] pb-0 px-4 lg:px-[60px] text-[#171918]">
