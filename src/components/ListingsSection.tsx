@@ -191,6 +191,7 @@ export default function ListingsSection() {
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [sortOrder, setSortOrder] = useState<'lowest' | 'highest' | 'newest'>('newest');
   const [isSortOpen, setIsSortOpen] = useState(false);
+  const [isMoreFiltersOpen, setIsMoreFiltersOpen] = useState<boolean>(false);
 
   // Range Slider States
   const [minPrice, setMinPrice] = useState<number>(30000);
@@ -437,7 +438,7 @@ export default function ListingsSection() {
     </div>
   );
 
-  const renderFilterControls = () => (
+  const renderFilterControls = (isMobile = false) => (
     <>
       {/* Rooms Multitoggle Filter */}
       <div className="flex flex-col gap-2">
@@ -469,9 +470,8 @@ export default function ListingsSection() {
         </div>
       </div>
 
-      {/* RANGE SLIDERS */}
+      {/* Price Range Capsule Slider */}
       <div className="flex flex-col gap-5 w-full max-w-[428px]">
-        {/* 1. Price Range Capsule Slider */}
         <div className="w-full flex flex-col gap-2">
           <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
             <div className="flex items-center gap-1.5">
@@ -490,7 +490,7 @@ export default function ListingsSection() {
           </div>
           <div className="px-3">
             <DualRangeSlider
-              min={50000}
+              min={30000}
               max={2000000}
               step={10000}
               minVal={minPrice}
@@ -502,89 +502,120 @@ export default function ListingsSection() {
             />
           </div>
         </div>
+      </div>
 
-        {/* 2. Area Range Capsule Slider */}
-        <div className="w-full flex flex-col gap-2">
-          <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
-            <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-              {minArea} m²
-            </span>
-            <span className="text-gray-400">|</span>
-            <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-              {maxArea} m²
-            </span>
+      {/* Toggle Button for Desktop */}
+      {!isMobile && (
+        <button
+          onClick={() => setIsMoreFiltersOpen(!isMoreFiltersOpen)}
+          className="flex items-center gap-2 text-xs font-rethink font-semibold text-[#171918] hover:text-black py-2.5 px-5 bg-gray-100 hover:bg-gray-200 transition-all rounded-full self-start cursor-pointer my-1 shadow-sm"
+        >
+          <span>{isMoreFiltersOpen ? t.listings.lessFilters : t.listings.moreFilters}</span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className={`transition-transform duration-300 ${isMoreFiltersOpen ? 'rotate-180' : ''}`}
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+      )}
+
+      {/* ADVANCED FILTERS (Always shown on mobile drawer, collapsible on desktop) */}
+      {(isMobile || isMoreFiltersOpen) && (
+        <motion.div
+          initial={!isMobile ? { opacity: 0, height: 0 } : false}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="flex flex-col gap-6 w-full max-w-[428px] overflow-hidden pt-1"
+        >
+          {/* Area Range Capsule Slider */}
+          <div className="w-full flex flex-col gap-2">
+            <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
+              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                {minArea} m²
+              </span>
+              <span className="text-gray-400">|</span>
+              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                {maxArea} m²
+              </span>
+            </div>
+            <div className="px-3">
+              <DualRangeSlider
+                min={30}
+                max={500}
+                step={5}
+                minVal={minArea}
+                maxVal={maxArea}
+                onChange={(minVal, maxVal) => {
+                  setMinArea(minVal);
+                  setMaxArea(maxVal);
+                }}
+              />
+            </div>
           </div>
-          <div className="px-3">
-            <DualRangeSlider
-              min={30}
-              max={500}
-              step={5}
-              minVal={minArea}
-              maxVal={maxArea}
-              onChange={(minVal, maxVal) => {
-                setMinArea(minVal);
-                setMaxArea(maxVal);
-              }}
+
+          {/* Floor Range Capsule Slider */}
+          <div className="w-full flex flex-col gap-2">
+            <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
+              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                {minFloor} {t.listings.floorLabel}
+              </span>
+              <span className="text-gray-400">|</span>
+              <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
+                {maxFloor} {t.listings.floorLabel}
+              </span>
+            </div>
+            <div className="px-3">
+              <DualRangeSlider
+                min={1}
+                max={50}
+                step={1}
+                minVal={minFloor}
+                maxVal={maxFloor}
+                onChange={(minVal, maxVal) => {
+                  setMinFloor(minVal);
+                  setMaxFloor(maxVal);
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Property Type Multitoggle */}
+          <div className="flex flex-col gap-3 mt-1">
+            <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
+              {t.listings.propertyTypeTitle}
+            </h3>
+            <CollapsibleToggleGroup
+              items={propertyTypes}
+              selectedIds={selectedPropertyTypes}
+              onSelect={handlePropertyTypeSelect}
+              limit={3}
+              viewMoreLabel={t.listings.viewMore}
+              viewLessLabel={t.listings.viewLess}
             />
           </div>
-        </div>
 
-        {/* 3. Floor Range Capsule Slider */}
-        <div className="w-full flex flex-col gap-2">
-          <div className="w-full border border-[#171918] rounded-full flex items-center justify-between" style={{ padding: '13px 22px', backgroundColor: '#FFF' }}>
-            <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-              {minFloor} {t.listings.floorLabel}
-            </span>
-            <span className="text-gray-400">|</span>
-            <span style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px' }}>
-              {maxFloor} {t.listings.floorLabel}
-            </span>
-          </div>
-          <div className="px-3">
-            <DualRangeSlider
-              min={1}
-              max={50}
-              step={1}
-              minVal={minFloor}
-              maxVal={maxFloor}
-              onChange={(minVal, maxVal) => {
-                setMinFloor(minVal);
-                setMaxFloor(maxVal);
-              }}
+          {/* Features Multitoggle Filter */}
+          <div className="flex flex-col gap-3">
+            <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
+              {t.listings.featuresFilter.title}
+            </h3>
+            <CollapsibleToggleGroup
+              items={featuresList}
+              selectedIds={selectedFeatures}
+              onSelect={handleFeatureSelect}
+              limit={3}
+              viewMoreLabel={t.listings.viewMore}
+              viewLessLabel={t.listings.viewLess}
             />
           </div>
-        </div>
-      </div>
-
-      {/* Property Type Multitoggle */}
-      <div className="flex flex-col gap-3 mt-2">
-        <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
-          {t.listings.propertyTypeTitle}
-        </h3>
-        <CollapsibleToggleGroup
-          items={propertyTypes}
-          selectedIds={selectedPropertyTypes}
-          onSelect={handlePropertyTypeSelect}
-          limit={3}
-          viewMoreLabel={t.listings.viewMore}
-          viewLessLabel={t.listings.viewLess}
-        />
-      </div>
-
-      {/* Features Multitoggle Filter */}
-      <div className="flex flex-col gap-3">
-        <h3 style={{ color: '#171918', fontFamily: '"Rethink Sans", sans-serif', fontSize: '16px', fontWeight: 600 }}>
-          {t.listings.featuresFilter.title}
-        </h3>
-        <CollapsibleToggleGroup
-          items={featuresList}
-          selectedIds={selectedFeatures}
-          onSelect={handleFeatureSelect}
-          limit={3}
-          viewMoreLabel={t.listings.viewMore}
-          viewLessLabel={t.listings.viewLess}
-        />
-      </div>
+        </motion.div>
+      )}
     </>
   );
 
@@ -667,13 +698,12 @@ export default function ListingsSection() {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start min-h-[500px] sm:min-h-[650px] lg:min-h-[850px]">
-        
         {/* 
           =========================================================
           DESKTOP LEFT COLUMN: STICKY FILTERS SIDEBAR (hidden on mobile/tablet)
           =========================================================
         */}
-        <aside className="hidden lg:flex w-[420px] shrink-0 sticky top-[100px] self-start flex-col gap-[72px] py-2">
+        <aside className="hidden lg:flex w-[420px] shrink-0 sticky top-[100px] max-h-[calc(100vh-120px)] overflow-y-auto pr-2 flex-col gap-6 py-2">
           
           {/* DIV 1: Elanlar (Title), Sort Dropdown & Search Input */}
           <div className="flex flex-col gap-4 w-full">
@@ -741,7 +771,7 @@ export default function ListingsSection() {
 
           {/* DIV 2: Otaqlar (Rooms) və altındakı bütün filtrlər */}
           <div className="flex flex-col gap-6 w-full">
-            {renderFilterControls()}
+            {renderFilterControls(false)}
           </div>
 
         </aside>
@@ -814,7 +844,7 @@ export default function ListingsSection() {
                   {/* Drawer Scrollable Content */}
                   <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-6">
                     {renderSearchInput()}
-                    {renderFilterControls()}
+                    {renderFilterControls(true)}
                   </div>
 
                   {/* Drawer Footer Action Buttons */}

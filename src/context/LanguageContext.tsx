@@ -35,6 +35,8 @@ export const TRANSLATIONS = {
       sortNewest: "Ən yenilər",
       viewMore: "Daha çox",
       viewLess: "Gizlət",
+      moreFilters: "Daha çox filtr",
+      lessFilters: "Daha az filtr",
       tabs: {
         all: "Hamısı",
         flats: "Mənzillər",
@@ -192,6 +194,8 @@ export const TRANSLATIONS = {
       sortNewest: "Newest",
       viewMore: "View more",
       viewLess: "Collapse",
+      moreFilters: "More filters",
+      lessFilters: "Less filters",
       tabs: {
         all: "All",
         flats: "Flats",
@@ -349,6 +353,8 @@ export const TRANSLATIONS = {
       sortNewest: "Сначала новые",
       viewMore: "Показать еще",
       viewLess: "Свернуть",
+      moreFilters: "Больше фильтров",
+      lessFilters: "Свернуть фильтры",
       tabs: {
         all: "Все",
         flats: "Квартиры",
