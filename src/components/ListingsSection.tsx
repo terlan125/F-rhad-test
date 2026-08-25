@@ -675,7 +675,7 @@ export default function ListingsSection() {
         <div className="hidden lg:flex w-[420px] shrink-0 sticky top-[40px] self-start flex-col gap-6 py-2">
           
           {/* Header & Sort Dropdown Div */}
-          <div className="flex flex-col gap-[16px] border-b border-gray-100 pb-[12px]">
+          <div className="flex items-center justify-between w-full">
             <h2
               className="font-rethink text-[#444] text-[36px] font-normal leading-normal"
               style={{
@@ -716,7 +716,7 @@ export default function ListingsSection() {
                     initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-30 py-2"
+                    className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-30 py-2"
                   >
                     <button onClick={() => { setSortOrder('lowest'); setIsSortOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-rethink">
                       {t.listings.sortLowest}
